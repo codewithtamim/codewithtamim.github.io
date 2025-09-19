@@ -1,11 +1,11 @@
 import type { IconMap, SocialLink, Site } from '@/types'
 
 export const SITE: Site = {
-  title: 'astro-erudite',
+  title: 'CodeWithTamim',
   description:
-    'astro-erudite is a opinionated, unstyled blogging template—built with Astro, Tailwind, and shadcn/ui.',
-  href: 'https://astro-erudite.vercel.app',
-  author: 'jktrn',
+    'Personal blog of Tamim Hossain - Founder & CEO at The Byte Array. Sharing insights on Network Programming, Android Development, VPN/Proxy technologies, and On Device ML.',
+  href: 'https://codewithtamim.github.io',
+  author: 'Tamim Hossain',
   locale: 'en-US',
   featuredPostCount: 2,
   postsPerPage: 3,
@@ -13,31 +13,39 @@ export const SITE: Site = {
 
 export const NAV_LINKS: SocialLink[] = [
   {
+    href: '/',
+    label: 'home',
+  },
+  {
     href: '/blog',
     label: 'blog',
   },
   {
-    href: '/authors',
-    label: 'authors',
+    href: '/projects',
+    label: 'projects',
   },
   {
-    href: '/about',
-    label: 'about',
+    href: '/experience',
+    label: 'experience',
   },
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: 'https://github.com/jktrn',
+    href: 'https://github.com/codewithtamim',
     label: 'GitHub',
   },
   {
-    href: 'https://twitter.com/enscry',
-    label: 'Twitter',
+    href: 'https://t.me/CodeWithTamim',
+    label: 'Telegram',
   },
   {
-    href: 'mailto:jason@enscribe.dev',
+    href: 'mailto:tamimh.dev@gmail.com',
     label: 'Email',
+  },
+  {
+    href: 'https://thebytearray.org',
+    label: 'Website',
   },
   {
     href: '/rss.xml',
@@ -50,6 +58,7 @@ export const ICON_MAP: IconMap = {
   GitHub: 'lucide:github',
   LinkedIn: 'lucide:linkedin',
   Twitter: 'lucide:twitter',
+  Telegram: 'lucide:send',
   Email: 'lucide:mail',
   RSS: 'lucide:rss',
 }

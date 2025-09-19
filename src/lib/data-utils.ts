@@ -30,6 +30,18 @@ export async function getAllProjects(): Promise<CollectionEntry<'projects'>[]> {
   })
 }
 
+export async function getAllExperience(): Promise<CollectionEntry<'experience'>[]> {
+  const experience = await getCollection('experience')
+  return experience.sort((a, b) => {
+    // Sort by most recent first (Present comes first, then by date)
+    if (a.data.endDate === 'Present' && b.data.endDate !== 'Present') return -1
+    if (b.data.endDate === 'Present' && a.data.endDate !== 'Present') return 1
+    
+    // For non-present dates, sort by start date (most recent first)
+    return b.data.startDate.localeCompare(a.data.startDate)
+  })
+}
+
 export async function getAllTags(): Promise<Map<string, number>> {
   const posts = await getAllPosts()
   return posts.reduce((acc, post) => {

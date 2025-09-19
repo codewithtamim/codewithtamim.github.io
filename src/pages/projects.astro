@@ -1,0 +1,47 @@
+---
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import ProjectCard from '@/components/ProjectCard.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getAllProjects } from '@/lib/data-utils'
+
+const projects = await getAllProjects()
+const ownProjects = projects.filter(project => !project.data.name.includes('Contributor'))
+const contributions = projects.filter(project => project.data.name.includes('Contributor'))
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="Projects" />
+  <Breadcrumbs items={[{ label: 'Projects', icon: 'lucide:folder' }]} />
+
+  <section>
+    <div class="min-w-full">
+      <div class="prose mb-8">
+        <h1 class="mt-0">My Projects & Contributions</h1>
+        <p>
+          Here's a collection of my projects and open source contributions, ranging from mobile applications to libraries and SDKs. 
+          Most of these focus on privacy, networking, and Android development.
+        </p>
+        <p>
+          I'm passionate about building tools that make developers' lives easier and creating privacy-focused 
+          solutions for better digital experiences.
+        </p>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="mb-4 text-2xl font-medium">My Projects</h2>
+        <div class="flex flex-col gap-4">
+          {ownProjects.map((project) => <ProjectCard project={project} />)}
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="mb-4 text-2xl font-medium">Open Source Contributions</h2>
+        <div class="flex flex-col gap-4">
+          {contributions.map((project) => <ProjectCard project={project} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
